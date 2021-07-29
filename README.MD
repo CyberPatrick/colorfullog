@@ -6,20 +6,20 @@ Package have 4 methods:
 3) warning - Date + yellow "Warning! + bold text;
 4) err - Date + red "Error!" + bold text.
 
-Will write '2021.07.29 20:10:04 **Hello World!**'
+Will write ![alt text](https://github.com/CyberPatrick/colorfullog/blob/main/img/Log.png)
 ```
 const { log, success, warning, err } = require('@cyber_patrick/colorfullog');
 log('Hello World!');
 ```
-Will write 2021.07.29 20:10:04 **Warning! Hello World!**
+Will write ![alt text](https://github.com/CyberPatrick/colorfullog/blob/main/img/Warning.png)
 ```
 warning('Hello World!');
 ```
-Will write 2021.07.29 20:10:04 **Success! Hello World!**
+Will write ![alt text](https://github.com/CyberPatrick/colorfullog/blob/main/img/Success.png)
 ```
 success('Hello World!');
 ```
-Will write 2021.07.29 20:10:04 **Error! Hello World! and stop programm**
+Will write ![alt text](https://github.com/CyberPatrick/colorfullog/blob/main/img/Error.png) and stop programm
 ```
 err('Hello World!');
 ```
