@@ -1,6 +1,6 @@
 {
   "name": "@cyber_patrick/colorfullog",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Make logs more colorful",
   "main": "index.js",
   "scripts": {
