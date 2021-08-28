@@ -1,6 +1,6 @@
 {
   "name": "@cyber_patrick/colorfullog",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "Make logs more colorful",
   "main": "index.js",
   "scripts": {
@@ -9,6 +9,6 @@
   "author": "Nikita",
   "license": "ISC",
   "dependencies": {
-    "chalk": "^4.1.1"
+    "chalk": "^4.1.2"
   }
 }

@@ -25,3 +25,7 @@ err('Hello World!');
 ```
 
 Note: err - call process.exit()
+
+# Loading
+Package have also an class Loading, to constructor you pass title, then to upgrade progress bar you should call pipe(progress, state).
+Which have two params, first is how much add to progress (1-100), second is how name process, may be passed
