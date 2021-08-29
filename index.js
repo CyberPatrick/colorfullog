@@ -1,4 +1,5 @@
 const chalk = require('chalk');
+const cursor = require('ansi')(process.stdout);
 
 function warning(text) {
   console.log(stringDate() + chalk.keyword('yellow')('Warning! ') + chalk.bold(text));
@@ -77,10 +78,39 @@ class Loading {
   }
 }
 
+class SimpleLoading {
+  constructor(name) {
+    this.name = chalk.bold.black(name) ?? chalk.bold.black('Loading');
+    this.anim = [chalk.red('|'), chalk.red('/'), chalk.red('-'), chalk.red('\\')];
+    this.animState = -1;
+    cursor.hide();
+    process.stdout.clearLine();
+    process.stdout.cursorTo(0);
+    process.stdout.write(this.name);
+    this.start = process.hrtime.bigint();
+    this.loading = setInterval(() => {
+      this.animState++;
+      if (this.animState === 4) this.animState = 0;
+      process.stdout.cursorTo(name.length); // this.name -> longer, due to chalk.red()
+      process.stdout.clearLine(1);
+      process.stdout.write(` ${this.anim[this.animState]}`);
+    }, 100);
+  }
+
+  stop() {
+    clearInterval(this.loading);
+    process.stdout.cursorTo(0);
+    process.stdout.clearLine();
+    process.stdout.write('Finished ' + this.name + ` with ${(process.hrtime.bigint() - this.start) / 1000000000n}s\n`);
+    cursor.show();
+  }
+}
+
 module.exports = {
   warning,
   success,
   log,
   err,
   Loading,
+  SimpleLoading,
 };
