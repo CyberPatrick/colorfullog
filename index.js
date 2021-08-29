@@ -91,10 +91,26 @@ class SimpleLoading {
     this.loading = setInterval(() => {
       this.animState++;
       if (this.animState === 4) this.animState = 0;
-      process.stdout.cursorTo(name.length); // this.name -> longer, due to chalk.red()
+      process.stdout.cursorTo(this.name.length - 19); // this.name -> longer, due to chalk.red()
       process.stdout.clearLine(1);
       process.stdout.write(` ${this.anim[this.animState]}`);
     }, 100);
+  }
+
+  changeState(name) {
+    this.name = chalk.bold.black(name) ?? chalk.bold.black('Loading');
+    clearInterval(this.loading);
+    process.stdout.clearLine();
+    process.stdout.cursorTo(0);
+    process.stdout.write(this.name);
+    this.loading = setInterval(() => {
+      this.animState++;
+      if (this.animState === 4) this.animState = 0;
+      process.stdout.cursorTo(this.name.length - 19); // this.name -> longer, due to chalk.bold.black()
+      process.stdout.clearLine(1);
+      process.stdout.write(` ${this.anim[this.animState]}`);
+    }, 100);
+
   }
 
   stop() {
@@ -104,7 +120,7 @@ class SimpleLoading {
     process.stdout.write('Finished ' + this.name + ` with ${(process.hrtime.bigint() - this.start) / 1000000000n}s\n`);
     cursor.show();
   }
-}
+};
 
 module.exports = {
   warning,
